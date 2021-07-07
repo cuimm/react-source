@@ -6,6 +6,7 @@ import {wrapToVdom} from './utils';
  * @param children 儿子或儿子们。children可能是一个字符串、数字、null、undefined、数组
  */
 function createElement(type, props, children) {
+  console.log('createElement', ...arguments);
   if (arguments.length > 3) {
     props.children = Array.prototype.slice.call(arguments, 2).map(wrapToVdom);
   } else {

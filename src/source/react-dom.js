@@ -12,7 +12,7 @@ function render(vdom, container) {
 
 /**
  * 创建真实节点
- * @param vdom
+ * @param vdom {type: 'div', {id: 'root', children: []}}
  * @returns {HTMLElement | Text}
  */
 function createDOM(vdom) {
@@ -23,6 +23,8 @@ function createDOM(vdom) {
   if (type === REACT_TEXT) {
     // 文本节点
     dom = document.createTextNode(props.content);
+  } else if (typeof type === 'function') {
+    return mountFunctionComponent(vdom);
   } else {
     // 原生DOM类型
     dom = document.createElement(type);
@@ -36,6 +38,17 @@ function createDOM(vdom) {
     }
   }
   return dom;
+}
+
+/**
+ * 挂载函数组件
+ * @param vdom
+ * @returns {HTMLElement|Text}
+ */
+function mountFunctionComponent(vdom) {
+  const {type, props} = vdom;
+  const renderVdom = type(props);
+  return createDOM(renderVdom);
 }
 
 /**
