@@ -21,13 +21,14 @@ function createDOM(vdom) {
   let dom;
 
   if (type === REACT_TEXT) {
-    // 文本节点
-    dom = document.createTextNode(props.content);
+    dom = document.createTextNode(props.content); /** 文本节点 **/
   } else if (typeof type === 'function') {
+    if (type.isReactComponent) {
+      return mountClassComponent(vdom);
+    }
     return mountFunctionComponent(vdom);
   } else {
-    // 原生DOM类型
-    dom = document.createElement(type);
+    dom = document.createElement(type); /** 原生DOM类型 **/
   }
   if (props) {
     updateProps(dom, {}, props);
@@ -48,6 +49,18 @@ function createDOM(vdom) {
 function mountFunctionComponent(vdom) {
   const {type, props} = vdom;
   const renderVdom = type(props);
+  return createDOM(renderVdom);
+}
+
+/**
+ * 挂在类组件
+ * @param vdom
+ * @returns {HTMLElement|Text}
+ */
+function mountClassComponent(vdom) {
+  const {type, props} = vdom;
+  const classInstance = new type(props);
+  const renderVdom = classInstance.render();
   return createDOM(renderVdom);
 }
 

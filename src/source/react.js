@@ -1,4 +1,5 @@
-import {wrapToVdom} from './utils';
+import { wrapToVdom } from './utils';
+import { Component } from './Component';
 
 /**
  * @param type 元素的类型
@@ -21,4 +22,5 @@ function createElement(type, props, children) {
 
 export default {
   createElement,
+  Component,
 }
