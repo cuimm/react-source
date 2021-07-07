@@ -1,7 +1,7 @@
 import {REACT_TEXT} from './constants';
 
 /**
- * 给根容器挂载节点
+ * 将虚拟节点转化为真实DOM并插入容器
  * @param vdom 虚拟节点
  * @param container 根容器
  */
@@ -50,9 +50,9 @@ function updateProps(dom, oldProps, newProps) {
       continue;
     }
     if (key === 'style') {
-      const style = newProps[key];
-      for (let attr in style) {
-        dom.style[attr] = style[attr];
+      const styleProps = newProps[key];
+      for (let attr in styleProps) {
+        dom.style[attr] = styleProps[attr];
       }
     } else {
       dom[key] = newProps[key];
