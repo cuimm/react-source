@@ -14,6 +14,8 @@ class Counter extends React.Component {
     console.log(this.state.number);
     this.setState({number: this.state.number + 1});
     console.log(this.state.number);
+
+    // 宏任务。执行该宏任务、或者微任务的时候，updateQueue.isBatchingUpdate已经是false了
     setTimeout(() => {
       this.setState({number: this.state.number + 1});
       console.log(this.state.number);

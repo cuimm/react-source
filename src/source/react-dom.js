@@ -1,4 +1,5 @@
 import {REACT_TEXT} from './constants';
+import {addEvent} from './event';
 
 /**
  * 将虚拟节点转化为真实DOM并插入容器
@@ -87,7 +88,8 @@ function updateProps(dom, oldProps, newProps) {
         dom.style[attr] = styleProps[attr];
       }
     } else if (key.startsWith('on')) {
-      dom[key.toLowerCase()] = newProps[key]; //=> dom.onclick = handleClick
+      // dom[key.toLocaleLowerCase()] = newProps[key]; //=> dom.onclick = handleClick
+      addEvent(dom, key.toLocaleLowerCase(), newProps[key]); // 事件委托
     } else {
       dom[key] = newProps[key];
     }

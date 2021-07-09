@@ -5,6 +5,21 @@ function shouldUpdate(classInstance, nextState) {
   classInstance.forceUpdate();
 }
 
+/**
+ * 批量更新
+ */
+export const updateQueue = {
+  isBatchingUpdate: false, // 通过此变量控制是否进行批量更新
+  updaters: [], // 内部存放将要执行更新的Updater实例
+  batchUpdate() {
+    for (let updater of updateQueue.updaters) {
+      updater.updateComponent();
+    }
+    updateQueue.isBatchingUpdate = false;
+    updateQueue.updaters.length = 0;
+  },
+};
+
 class Updater {
   constructor(classInstance) {
     this.classInstance = classInstance; // 类组件实例
@@ -24,13 +39,19 @@ class Updater {
    * 触发更新逻辑
    * 不管状态和属性是否变化，都会执行此方法
    */
-  emitUpdate() {
-    this.updateComponent();
+  emitUpdate(nextProps) {
+    this.nextProps = nextProps; // 可能传过来一些其他属性
+
+    if (updateQueue.isBatchingUpdate) { // 如果是批量更新模式，那么就把此Updater实例添加到updateQueue中去
+      updateQueue.updaters.push(this);
+    } else {
+      this.updateComponent(); // 非批量更新模式，直接更新组件
+    }
   }
 
   updateComponent() {
-    const {classInstance, pendingStates} = this;
-    if (pendingStates.length > 0) {
+    const {classInstance, pendingStates, nextProps} = this;
+    if (nextProps || (pendingStates.length > 0)) {
       /** 有等待更新的队列 **/
       shouldUpdate(classInstance, this.getState());
     }
