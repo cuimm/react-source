@@ -9,16 +9,26 @@ const root = document.getElementById('root');
 // 第一次点击"+",打印：0 0 2 3
 class Counter extends React.Component {
   state = {number: 0};
+
   handleClick = () => {
-    this.setState({number: this.state.number + 1});
-    console.log(this.state.number);
+
+    /*
+      setState在当前事件环中是批量更新的，非当前事件环是非批量更新的。
+    */
     this.setState({number: this.state.number + 1});
     console.log(this.state.number);
 
-    // 宏任务。执行该宏任务、或者微任务的时候，updateQueue.isBatchingUpdate已经是false了
+    this.setState({number: this.state.number + 1});
+    console.log(this.state.number);
+
+    /*
+      宏任务
+      执行该宏任务、或者微任务的时候，updateQueue.isBatchingUpdate已经是false了
+    */
     setTimeout(() => {
       this.setState({number: this.state.number + 1});
       console.log(this.state.number);
+
       this.setState({number: this.state.number + 1});
       console.log(this.state.number);
     });
