@@ -17,7 +17,7 @@ function render(vdom, container) {
  * @returns {HTMLElement | Text}
  */
 function createDOM(vdom) {
-  const {type, props} = vdom;
+  const {type, props, ref} = vdom;
   // 真实dom节点
   let dom;
 
@@ -43,6 +43,10 @@ function createDOM(vdom) {
   // 将创建出来的真实DOM挂载到虚拟dom的dom属性上
   vdom.dom = dom;
 
+  if (ref) {
+    ref.current = dom; // 让ref的current指向真实的DOM实例
+  }
+
   return dom;
 }
 
@@ -64,10 +68,15 @@ function mountFunctionComponent(vdom) {
  * @returns {HTMLElement|Text}
  */
 function mountClassComponent(vdom) {
-  const {type, props} = vdom;
+  const {type, props, ref} = vdom;
   const classInstance = new type(props);
   const renderVdom = classInstance.render();
   classInstance.oldRenderVdom = vdom.oldRenderVdom = renderVdom; // 类组件（oldRenderVdom）：将计算出来的虚拟DOM挂载到类的实例上
+
+  if (ref) {
+    ref.current = classInstance; // ref.current指向类组件的实例
+  }
+
   return createDOM(renderVdom);
 }
 
