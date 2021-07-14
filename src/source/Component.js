@@ -3,12 +3,12 @@ import { findDOM, compareTwoVdom } from './react-dom';
 function shouldUpdate(classInstance, nextProps, nextState) {
   let willUpdate = true;
 
-  /** 生命周期 shouldComponentUpdate **/
+  /** 生命周期 shouldComponentUpdate 是否更新 **/
   if (classInstance.shouldComponentUpdate && (!classInstance.shouldComponentUpdate(nextProps, nextState))) {
     willUpdate = false;
   }
 
-  /** 生命周期 componentWillUpdate **/
+  /** 生命周期 componentWillUpdate 即将更新 **/
   if (willUpdate && classInstance.componentWillUpdate) {
     classInstance.componentWillUpdate();
   }
@@ -130,7 +130,7 @@ export class Component {
     compareTwoVdom(oldDOM.parentNode, oldRenderVdom, newRenderVdom); // 比较差异，把差异更新到真实DOM上
     this.oldRenderVdom = newRenderVdom;
 
-    /** 生命周期  componentDidUpdate **/
+    /** 生命周期  componentDidUpdate 更新完毕 **/
     if (this.componentDidUpdate) {
       this.componentDidUpdate();
     }

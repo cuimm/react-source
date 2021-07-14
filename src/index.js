@@ -1,10 +1,49 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import React from './source/react';
-import ReactDOM from './source/react-dom';
+// import React from './source/react';
+// import ReactDOM from './source/react-dom';
 
-const root = document.getElementById('root');
+class ChildCounter extends React.Component {
+    static defaultProps = {
+        name: 'ChildCounter'
+    };
+
+    constructor(props) {
+        super(props);
+        this.state = {number: 1};
+    }
+
+    componentWillMount() {
+        console.log('ChildCounter 1.componentWillMount');
+    }
+
+    render() {
+        console.log('ChildCounter 2.render');
+        return (
+            <div>
+                {this.props.name}:{this.props.count}
+            </div>
+        )
+    }
+
+    componentDidMount() {
+        console.log('ChildCounter 3.componentDidMount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('ChildCounter 4.shouldComponentUpdate');
+        return nextProps.count % 3 === 0; // 子组件count是3的倍数才更新
+    }
+
+    componentWillReceiveProps() {
+        console.log('ChildCounter 5.componentWillReceiveProps');
+    }
+
+    componentWillUnmount() {
+        console.log('ChildCounter 6.componentWillUnmount');
+    }
+}
 
 class Counter extends React.Component {
     static defaultProps = {
@@ -47,8 +86,9 @@ class Counter extends React.Component {
     render() {
         console.log('Counter 3.render');
         return (
-            <div>
+            <div id={`id_${this.state.number}`}>
                 <p>{this.props.name}: {this.state.number}</p>
+                {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
                 <button onClick={this.handleClick}>+</button>
             </div>
         )
@@ -63,4 +103,4 @@ class Counter extends React.Component {
     }
 }
 
-ReactDOM.render(<Counter/>, root);
+ReactDOM.render(<Counter/>, document.getElementById('root'));
