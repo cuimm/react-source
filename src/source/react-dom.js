@@ -1,5 +1,5 @@
-import {REACT_TEXT} from './constants';
-import {addEvent} from './event';
+import { addEvent } from './event';
+import { REACT_FORWARD_REF_TYPE, REACT_TEXT } from './constants';
 
 /**
  * 将虚拟节点转化为真实DOM并插入容器
@@ -21,13 +21,15 @@ function createDOM(vdom) {
   // 真实dom节点
   let dom;
 
-  if (type === REACT_TEXT) {
-    dom = document.createTextNode(props.content); /** 文本节点 **/
+  if (type && type.$$typeof === REACT_FORWARD_REF_TYPE) { /** 函数组件ref **/
+    return mountForwardComponent(vdom);
+  } else if (type === REACT_TEXT) { /** 文本节点 **/
+    dom = document.createTextNode(props.content);
   } else if (typeof type === 'function') {
     if (type.isReactComponent) {
-      return mountClassComponent(vdom);
+      return mountClassComponent(vdom); /** 类组件 **/
     }
-    return mountFunctionComponent(vdom);
+    return mountFunctionComponent(vdom); /** 函数组件 **/
   } else {
     dom = document.createElement(type); /** 原生DOM类型 **/
   }
@@ -63,7 +65,7 @@ function mountFunctionComponent(vdom) {
 }
 
 /**
- * 挂在类组件
+ * 挂载类组件
  * @param vdom
  * @returns {HTMLElement|Text}
  */
@@ -77,6 +79,17 @@ function mountClassComponent(vdom) {
     ref.current = classInstance; // ref.current指向类组件的实例
   }
 
+  return createDOM(renderVdom);
+}
+
+/**
+ * 挂载函数组件ref
+ * @param vdom
+ */
+function mountForwardComponent(vdom) {
+  const {type, props, ref} = vdom;
+  const renderVdom = type.render(props, ref);
+  vdom.oldRenderVdom = renderVdom;
   return createDOM(renderVdom);
 }
 

@@ -10,7 +10,7 @@ function TextInput(props, ref) {
   return <input ref={ref}/>
 }
 
-const ForwardedTextInput = React.forwardRef(TextInput);
+const ForwardedTextInput = React.forwardRef(TextInput); // { $$typeof: 'react.forward_ref', render: functionComponent }
 
 class Form extends React.Component {
   constructor(props) {
@@ -24,6 +24,12 @@ class Form extends React.Component {
   };
 
   render() {
+    console.log(<ForwardedTextInput ref={this.textInputRef}/>);
+    /*
+    {
+      type: { $$typeof: 'react.forward_ref', render: TextInput }
+    }
+    * */
     return (
         <div>
           <ForwardedTextInput ref={this.textInputRef}/>

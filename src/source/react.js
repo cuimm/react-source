@@ -1,3 +1,4 @@
+import { REACT_FORWARD_REF_TYPE } from './constants';
 import { wrapToVdom } from './utils';
 import { Component } from './Component';
 
@@ -15,7 +16,7 @@ function createElement(type, props, children) {
     delete props.__self;
 
     ref = props.ref;
-    // delete props.ref; // props内部没有ref属性
+    delete props.ref; // props内部没有ref属性
 
     key = props.key;
     delete props.key; // props内部没有key属性
@@ -48,13 +49,12 @@ function createRef() {
 /**
  * 不能在函数组件上使用ref，因为函数组件没有实例
  * Ref 转发允许某些组件接收 ref，并将其向下传递（换句话说，“转发”它）给子组件
- * @param FunctionComponent
+ * @param render 要转发的函数组件
  */
-function forwardRef(FunctionComponent) {
-  return class extends Component {
-    render() {
-      return FunctionComponent(this.props, this.props.ref);
-    }
+function forwardRef(render) {
+  return {
+    $$typeof: REACT_FORWARD_REF_TYPE,
+    render,
   }
 }
 
@@ -64,3 +64,13 @@ export default {
   createRef,
   forwardRef,
 }
+
+/*
+function forwardRef(FunctionComponent) {
+  return class extends Component {
+    render() {
+      return FunctionComponent(this.props, this.props.ref);
+    }
+  }
+}
+*/
