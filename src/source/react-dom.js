@@ -7,6 +7,7 @@ import { REACT_FORWARD_REF_TYPE, REACT_TEXT } from './constants';
  * @param container 根容器
  */
 function render(vdom, container) {
+  if (!vdom) return;
   const newDOM = createDOM(vdom);
   container.appendChild(newDOM);
 }
@@ -71,8 +72,21 @@ function mountFunctionComponent(vdom) {
  */
 function mountClassComponent(vdom) {
   const {type, props, ref} = vdom;
-  const classInstance = new type(props);
+  const defaultProps = type.defaultProps || {};
+  const classInstance = new type({...defaultProps, ...props});
+
+  /** 生命周期: componentWillMount **/
+  if (classInstance.componentWillMount) {
+    classInstance.componentWillMount();
+  }
+
   const renderVdom = classInstance.render();
+
+  /** 生命周期 componentDidMount **/
+  if (classInstance.componentDidMount) {
+    classInstance.componentDidMount();
+  }
+
   classInstance.oldRenderVdom = vdom.oldRenderVdom = renderVdom; // 类组件（oldRenderVdom）：将计算出来的虚拟DOM挂载到类的实例上
 
   if (ref) {

@@ -1,8 +1,27 @@
 import { findDOM, compareTwoVdom } from './react-dom';
 
-function shouldUpdate(classInstance, nextState) {
-  classInstance.state = nextState; // 更新state
-  classInstance.forceUpdate();
+function shouldUpdate(classInstance, nextProps, nextState) {
+  let willUpdate = true;
+
+  /** 生命周期 shouldComponentUpdate **/
+  if (classInstance.shouldComponentUpdate && (!classInstance.shouldComponentUpdate(nextProps, nextState))) {
+    willUpdate = false;
+  }
+
+  /** 生命周期 componentWillUpdate **/
+  if (willUpdate && classInstance.componentWillUpdate) {
+    classInstance.componentWillUpdate();
+  }
+
+  // 不管组件要不要更新，属性和状态都要更新成最新的
+  if (nextProps) {
+    classInstance.props = nextProps;
+  }
+  classInstance.state = nextState;
+
+  if (willUpdate) {
+    classInstance.forceUpdate();
+  }
 }
 
 /**
@@ -38,6 +57,9 @@ class Updater {
   /**
    * 触发更新逻辑
    * 不管状态和属性是否变化，都会执行此方法
+   *
+   * state: 执行setState，状态改变，触发emitUpdate更新
+   * props：属性变化，直接触发emitUpdate更新
    */
   emitUpdate(nextProps) {
     this.nextProps = nextProps; // 可能传过来一些其他属性
@@ -53,7 +75,7 @@ class Updater {
     const {classInstance, pendingStates, nextProps} = this;
     if (nextProps || (pendingStates.length > 0)) {
       /** 有等待更新的队列 **/
-      shouldUpdate(classInstance, this.getState());
+      shouldUpdate(classInstance, nextProps, this.getState());
     }
   }
 
@@ -107,5 +129,10 @@ export class Component {
     const newRenderVdom = this.render(); // 计算出新的虚拟dom
     compareTwoVdom(oldDOM.parentNode, oldRenderVdom, newRenderVdom); // 比较差异，把差异更新到真实DOM上
     this.oldRenderVdom = newRenderVdom;
+
+    /** 生命周期  componentDidUpdate **/
+    if (this.componentDidUpdate) {
+      this.componentDidUpdate();
+    }
   }
 }
