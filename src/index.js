@@ -31,13 +31,13 @@ class ChildCounter extends React.Component {
         console.log('ChildCounter 3.componentDidMount');
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('ChildCounter 4.shouldComponentUpdate');
-        return nextProps.count % 3 === 0; // 子组件count是3的倍数才更新
+    componentWillReceiveProps() {
+        console.log('ChildCounter 4.componentWillReceiveProps');
     }
 
-    componentWillReceiveProps() {
-        console.log('ChildCounter 5.componentWillReceiveProps');
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('ChildCounter 5.shouldComponentUpdate');
+        return nextProps.count % 3 === 0; // 子组件count是3的倍数才更新
     }
 
     componentWillUnmount() {

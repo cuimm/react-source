@@ -17,4 +17,13 @@ function FunctionComponent(props) {
 const element = <FunctionComponent name='cuimm' />
 console.log('element', element);
 
+/*
+{
+    type: ƒ FunctionComponent(props),
+    props: {
+        name: 'cuimm'
+    }
+}
+* */
+
 ReactDOM.render(element, root);
