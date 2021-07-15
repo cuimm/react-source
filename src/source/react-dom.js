@@ -175,8 +175,7 @@ export function findDOM(vdom) {
  */
 export function compareTwoVdom(parentNode, oldVdom, newVdom) {
   if (!oldVdom && !newVdom) {
-    return;
-  } else if (oldVdom && !newVdom) { // 老的没有 && 新的有 => 移除老DOM
+  } else if (oldVdom && !newVdom) { // 1. 老的没有 && 新的有 => 移除老DOM
     const currentDOM = findDOM(oldVdom);
     currentDOM.parentNode.removeChild(currentDOM);
 
@@ -184,7 +183,7 @@ export function compareTwoVdom(parentNode, oldVdom, newVdom) {
     if (oldVdom.classInstance && oldVdom.classInstance.componentWillUnmount) {
       oldVdom.classInstance.componentWillUnmount();
     }
-  } else if (!oldVdom && newVdom) { // 老的没有 && 新的有 => 根据新的Vdom创建新的DOM并挂载到父DOM容器中
+  } else if (!oldVdom && newVdom) { // 2. 老的没有 && 新的有 => 根据新的Vdom创建新的DOM并挂载到父DOM容器中
     const newDOM = createDOM(newVdom);
     parentNode.appendChild(newDOM); // TODO 此处可能是插入到当前位置 insertBefore
 
@@ -192,7 +191,7 @@ export function compareTwoVdom(parentNode, oldVdom, newVdom) {
     if (newDOM.componentDidMount) {
         newDOM.componentDidMount();
     }
-  } else if (oldVdom && newVdom && oldVdom.type !== newVdom.type) { // 新老都有 && type不同（无法复用）=> 删除老的，添加新的
+  } else if (oldVdom && newVdom && oldVdom.type !== newVdom.type) { // 3. 新老都有 && type不同（无法复用）=> 删除老的，添加新的
     const oldDOM = findDOM(oldVdom); // 获取老的DOM
     const newDOM = createDOM(newVdom); // 创建新的DOM
     oldDOM.parentNode.replaceChild(newDOM, oldDOM);
@@ -205,7 +204,7 @@ export function compareTwoVdom(parentNode, oldVdom, newVdom) {
     if (newDOM.componentDidMount) {
       newDOM.componentDidMount();
     }
-  } else { // 老得有 && 新的也有 && 新老type一样 => 复用老节点，深度递归dom diff
+  } else { // 4. 老得有 && 新的也有 && 新老type一样 => 复用老节点，深度递归dom diff
     updateElement(oldVdom, newVdom);
   }
 }
