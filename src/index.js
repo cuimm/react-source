@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+// import React from 'react';
+// import ReactDOM from 'react-dom';
 
-// import React from './source/react';
-// import ReactDOM from './source/react-dom';
+import React from './source/react';
+import ReactDOM from './source/react-dom';
 
 class ChildCounter extends React.Component {
     static defaultProps = {
@@ -84,7 +84,22 @@ class Counter extends React.Component {
     }
 
     render() {
-        console.log('Counter 3.render');
+        console.log('Counter 3.render', );
+        /*
+            => 当this.state.number === 4时，经babel解析的vdom结构为：
+            {
+                type: 'div',
+                props: {
+                    id: 'id_4',
+                    children: [
+                        { type: 'p' },
+                        null,
+                        { type: 'button' }
+                    ]
+                }
+            }
+            => div的子节点个数为3，第2个子节点为null
+        */
         return (
             <div id={`id_${this.state.number}`}>
                 <p>{this.props.name}: {this.state.number}</p>
