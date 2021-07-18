@@ -17,7 +17,16 @@ function shouldUpdate(classInstance, nextProps, nextState) {
   if (nextProps) {
     classInstance.props = nextProps;
   }
-  classInstance.state = nextState;
+
+  /** 生命周期 getDerivedStateFromProps 从新属性上派生状态 接收参数：新属性 老状态 **/
+  if (classInstance.constructor.getDerivedStateFromProps) {
+    const iNextState = classInstance.constructor.getDerivedStateFromProps(nextProps, classInstance.state);
+    if (nextState) {
+      classInstance.state = iNextState;
+    }
+  } else {
+    classInstance.state = nextState;
+  }
 
   if (willUpdate) {
     classInstance.forceUpdate();
@@ -127,12 +136,19 @@ export class Component {
     const oldRenderVdom = this.oldRenderVdom; // 老的虚拟dom
     const oldDOM = findDOM(oldRenderVdom); // 根据老的虚拟dom查找老的真实DOM
     const newRenderVdom = this.render(); // 计算出新的虚拟dom
+
+    /** 生命周期 getSnapshotBeforeUpdate 获取更新前快照 **/
+    let extraArgs;
+    if (this.getSnapshotBeforeUpdate) {
+      extraArgs = this.getSnapshotBeforeUpdate();
+    }
+
     compareTwoVdom(oldDOM.parentNode, oldRenderVdom, newRenderVdom); // 比较差异，把差异更新到真实DOM上
     this.oldRenderVdom = newRenderVdom;
 
     /** 生命周期  componentDidUpdate 更新完毕 **/
     if (this.componentDidUpdate) {
-      this.componentDidUpdate();
+      this.componentDidUpdate(this.props, this.state, extraArgs);
     }
   }
 }
