@@ -45,6 +45,14 @@ class ChildCounter extends React.Component {
     }
 }
 
+function FunctionChildCounter(props) {
+    return (
+      <div>
+          FunctionChildCounter: {props.count}
+      </div>
+    );
+}
+
 class Counter extends React.Component {
     static defaultProps = {
         name: 'Counter'
@@ -104,6 +112,7 @@ class Counter extends React.Component {
             <div id={`id_${this.state.number}`}>
                 <p>{this.props.name}: {this.state.number}</p>
                 {this.state.number === 4 ? null : <ChildCounter count={this.state.number}/>}
+                <FunctionChildCounter count={this.state.number}/>
                 <button onClick={this.handleClick}>+</button>
             </div>
         )
