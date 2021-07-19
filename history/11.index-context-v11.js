@@ -78,10 +78,10 @@ class Content extends React.Component {
 
     render() {
         return (
-          <div style={{margin: '10px', border:`5px solid ${this.context.color}`, padding: '5px'}}>
-              <button onClick={this.context.changeColor.bind(this, 'blue')}>变蓝</button>
-              <button onClick={() => this.context.changeColor('green')}>变绿</button>
-          </div>
+            <div style={{margin: '10px', border:`5px solid ${this.context.color}`, padding: '5px'}}>
+                <button onClick={this.context.changeColor.bind(this, 'blue')}>变蓝</button>
+                <button onClick={() => this.context.changeColor('green')}>变绿</button>
+            </div>
         );
     }
 }
@@ -105,13 +105,13 @@ class Page extends React.Component {
         };
         const value = {color: this.state.color, changeColor: this.changeColor};
         return (
-           <Provider value={value}>
-               <div style={style}>
-                   主页
-                   <Header/>
-                   <Main />
-               </div>
-           </Provider>
+            <Provider value={value}>
+                <div style={style}>
+                    主页
+                    <Header/>
+                    <Main />
+                </div>
+            </Provider>
         );
     }
 }

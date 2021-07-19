@@ -36,9 +36,12 @@ function createDOM(vdom) {
       return mountClassComponent(vdom); /** 类组件 **/
     }
     return mountFunctionComponent(vdom); /** 函数组件 **/
-  } else {
+  } else if (typeof type === 'string') {
     dom = document.createElement(type); /** 原生DOM类型 **/
+  } else {
+    throw new Error('无法处理的元素类型' + type);
   }
+
   if (props) {
     updateProps(dom, {}, props);
     if (typeof props.children === 'object' && props.children.type) {
@@ -79,6 +82,11 @@ function mountClassComponent(vdom) {
   const {type, props, ref} = vdom;
   const defaultProps = type.defaultProps || {};
   const classInstance = new type({...defaultProps, ...props});
+
+  if (type.contextType) {
+    classInstance.context = type.contextType._value; // Context上下文
+  }
+
   vdom.classInstance = classInstance; // 将组件实例绑定在vdom上
 
   /** 生命周期: componentWillMount 即将挂载 **/

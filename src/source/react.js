@@ -58,11 +58,47 @@ function forwardRef(render) {
   }
 }
 
+/**
+ * 创建Context上下文
+ */
+function createContext() {
+  const context = {
+    Provider,
+    Consumer,
+  };
+
+  /**
+   * Provider(生产者): 用于生产共享数据的地方
+   * @param props Provider组件的props
+   * @returns 返回Provider组件的子元素
+   * @constructor
+   */
+  function Provider(props) {
+    const {value, children} = props;
+    context._value = value; // 将props中的value值（上下文共享数据）绑定到context上
+    return children;
+  }
+
+  /**
+   * Consumer(消费者): 消费者，专门消费供应商(Provider)产生数据
+   * @param props
+   * @returns {*}
+   * @constructor
+   */
+  function Consumer(props) {
+    const {children} = props;
+    return children(context._value);
+  }
+
+  return context;
+}
+
 export default {
   createElement,
   Component,
   createRef,
   forwardRef,
+  createContext,
 }
 
 /*

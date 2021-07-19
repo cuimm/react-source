@@ -135,6 +135,12 @@ export class Component {
   forceUpdate() {
     const oldRenderVdom = this.oldRenderVdom; // 老的虚拟dom
     const oldDOM = findDOM(oldRenderVdom); // 根据老的虚拟dom查找老的真实DOM
+
+    /** 如果使用了Context上下文 => 组件在更新时需重新获取Context上下文对象，否则，子组件不会更新 **/
+    if (this.constructor.contextType) {
+      this.context = this.constructor.contextType._value;
+    }
+
     const newRenderVdom = this.render(); // 计算出新的虚拟dom
 
     /** 生命周期 getSnapshotBeforeUpdate 获取更新前快照 **/
