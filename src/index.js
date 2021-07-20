@@ -26,6 +26,7 @@ const withLoading = Component => {
     }
 };
 
+@withLoading
 class Panel extends React.Component {
     render() {
         return (
@@ -38,6 +39,6 @@ class Panel extends React.Component {
     }
 }
 
-const LoadingPanel = withLoading(Panel);
+// const LoadingPanel = withLoading(Panel);
 
-ReactDOM.render(<LoadingPanel title='报表'/>, document.getElementById('root'));
+ReactDOM.render(<Panel title='报表'/>, document.getElementById('root'));

@@ -50,3 +50,40 @@ React为了性能考虑，会将多个setState的调用合并为一个来执行�
 ### dom diff
 react不是组件化更新，因为react没有类似vue的响应式的更新机制，不能准确定位哪里更新的。
 
+
+## cra支持装饰器
+npm i react-app-rewired customize-cra @babel/plugin-proposal-decorators -D
+
+修改package.json配置：
+    "scripts": {
+        "start": "react-app-rewired start",
+        "build": "react-app-rewired build",
+        "test": "react-app-rewired test",
+        "eject": "react-app-rewired eject"
+    }
+
+config-overrides.js：
+
+    const {override, addBabelPlugin} = require('customize-cra');
+    
+    module.exports = override(
+        addBabelPlugin([
+            "@babel/plugin-proposal-decorators", {"legacy": true}
+        ])
+    );
+    
+jsconfig.json（vscode）：
+    {
+      "compilerOptions": {
+         "experimentalDecorators": true
+      }
+    }
+    
+### 属性继承
+基于属性代理：操作组件的props
+
+### 反向继承
+基于反向继承：拦截生命周期、state、渲染过程
+
+
+
