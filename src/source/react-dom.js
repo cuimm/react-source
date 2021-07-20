@@ -143,7 +143,9 @@ function updateProps(dom, oldProps, newProps) {
       // dom[key.toLocaleLowerCase()] = newProps[key]; //=> dom.onclick = handleClick
       addEvent(dom, key.toLocaleLowerCase(), newProps[key]); // 事件委托
     } else {
-      dom[key] = newProps[key];
+      if (newProps[key]) {
+        dom[key] = newProps[key];
+      }
     }
   }
 }

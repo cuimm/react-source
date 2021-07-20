@@ -37,6 +37,29 @@ function createElement(type, props, children) {
   }
 }
 
+/**
+ * 根据老的元素，克隆出一个新的元素
+ * @param oldElement 老元素
+ * @param newProps 新属性
+ * @param children 新儿子
+ */
+function cloneElement(oldElement, newProps, children) {
+  if (arguments.length > 3) {
+    children = Array.prototype.slice.call(arguments, 2).map(wrapToVdom);
+  } else {
+    children = wrapToVdom(children);
+  }
+  const props = {
+    ...oldElement.props,
+    ...newProps,
+    children,
+  };
+  return {
+    ...oldElement,
+    props,
+  };
+}
+
 /*
 * 创建ref实例
 * */
@@ -99,6 +122,7 @@ export default {
   createRef,
   forwardRef,
   createContext,
+  cloneElement,
 }
 
 /*
