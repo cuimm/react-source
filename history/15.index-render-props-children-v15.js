@@ -13,33 +13,43 @@ class MouseTicker extends React.Component {
     };
   }
 
-  handleMouseMove = event => {
+  handleMouseMove = (event) => {
     this.setState({
       x: event.clientX,
       y: event.clientY,
     });
-  };
+  }
 
   render() {
     return (
         <div onMouseMove={this.handleMouseMove}>
-          {this.props.render(this.state)}
+          {this.props.children(this.state)}
         </div>
     );
   }
 }
 
-const render = props => {
-  return (
-      <div>
-        <h1>移动鼠标</h1>
-        <h2>当前鼠标位置: [{props.x}, {props.y}]</h2>
-      </div>
-  )
-};
-
-// 自定义render属性是一个函数
 ReactDOM.render(
-    <MouseTicker render={render}/>,
+    <MouseTicker>
+      {
+        props => {
+          return (
+              <div>
+                <h1>移动鼠标</h1>
+                <h2>当前鼠标位置: [{props.x}, {props.y}]</h2>
+              </div>
+          )
+        }
+      }
+    </MouseTicker>,
     document.getElementById('root')
 );
+
+/*
+ {
+    type: MouseTicker,
+    props: {
+      children: props => {...}
+    },
+ }
+ */

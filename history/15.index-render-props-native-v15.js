@@ -4,6 +4,10 @@
 import React from './source/react';
 import ReactDOM from './source/react-dom';
 
+
+/**
+ * 原生实现
+ */
 class MouseTicker extends React.Component {
   constructor(props) {
     super(props);
@@ -13,33 +17,24 @@ class MouseTicker extends React.Component {
     };
   }
 
-  handleMouseMove = event => {
+  handleMouseMove = (event) => {
     this.setState({
       x: event.clientX,
       y: event.clientY,
     });
-  };
+  }
 
   render() {
     return (
-        <div onMouseMove={this.handleMouseMove}>
-          {this.props.render(this.state)}
+        <div
+            onMouseMove={this.handleMouseMove}
+            style={{width: '100vw', height: '100vh'}}
+        >
+          <h1>移动鼠标</h1>
+          <h2>当前鼠标位置: [{this.state.x},{this.state.y}]</h2>
         </div>
     );
   }
 }
 
-const render = props => {
-  return (
-      <div>
-        <h1>移动鼠标</h1>
-        <h2>当前鼠标位置: [{props.x}, {props.y}]</h2>
-      </div>
-  )
-};
-
-// 自定义render属性是一个函数
-ReactDOM.render(
-    <MouseTicker render={render}/>,
-    document.getElementById('root')
-);
+ReactDOM.render(<MouseTicker />, document.getElementById('root'));
