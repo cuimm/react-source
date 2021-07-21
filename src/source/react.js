@@ -1,4 +1,4 @@
-import { REACT_FORWARD_REF_TYPE } from './constants';
+import {REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_CONTEXT} from './constants';
 import { wrapToVdom } from './utils';
 import { Component } from './Component';
 
@@ -84,7 +84,7 @@ function forwardRef(render) {
 /**
  * 创建Context上下文
  */
-function createContext() {
+function _createContext() {
   const context = {
     Provider,
     Consumer,
@@ -113,6 +113,24 @@ function createContext() {
     return children(context._value);
   }
 
+  return context;
+}
+
+/**
+ * 创建Context上下文
+ */
+function createContext() {
+  const context = {
+    $$typeof: REACT_CONTEXT
+  };
+  context.Provider = {
+    $$typeof: REACT_PROVIDER,
+    _context: context,
+  };
+  context.Consumer = {
+    $$typeof: REACT_CONTEXT,
+    _context: context,
+  };
   return context;
 }
 

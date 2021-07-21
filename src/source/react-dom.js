@@ -1,5 +1,5 @@
 import { addEvent } from './event';
-import { REACT_FORWARD_REF_TYPE, REACT_TEXT } from './constants';
+import {REACT_CONTEXT, REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_TEXT} from './constants';
 
 /**
  * 将虚拟节点转化为真实DOM并插入容器
@@ -27,7 +27,11 @@ function createDOM(vdom) {
   // 真实dom节点
   let dom;
 
-  if (type && type.$$typeof === REACT_FORWARD_REF_TYPE) { /** 函数组件ref **/
+  if (type && type.$$typeof === REACT_PROVIDER) { /** Context.Provider **/
+    return mountProviderComponent(vdom);
+  } else if (type && type.$$typeof === REACT_CONTEXT) { /** Context.Consumer **/
+    return mountContextComponent(vdom);
+  } else if (type && type.$$typeof === REACT_FORWARD_REF_TYPE) { /** 函数组件ref **/
     return mountForwardComponent(vdom);
   } else if (type === REACT_TEXT) { /** 文本节点 **/
     dom = document.createTextNode(props.content);
@@ -124,6 +128,29 @@ function mountForwardComponent(vdom) {
 }
 
 /**
+ * 挂载Context.Provider
+ * @param vdom
+ */
+function mountProviderComponent(vdom) {
+  const {type, props} = vdom; // type = {$$typeof: REACT_PROVIDER, _context: context }
+  type._context._currentValue = props.value; // 在渲染Provider组件的时候，拿到属性重的value，赋值给context._currentValue
+  const renderVdom = props.children; // Context.Provider 渲染出的vdom是字节点
+  vdom.oldRenderVdom = renderVdom;
+  return createDOM(renderVdom);
+}
+
+/**
+ * 挂载Context.Consumer
+ * @param vdom
+ */
+function mountContextComponent(vdom) {
+  const {type, props} = vdom;
+  const renderVdom = props.children(type._context._currentValue); // Consumer组件的字节点是一个函数，参数为父节点提供的value
+  vdom.oldRenderVdom = renderVdom;
+  return createDOM(renderVdom);
+}
+
+/**
  * 根据虚拟DOM中的属性更新真实DOM属性
  * @param dom
  * @param oldProps
@@ -170,10 +197,10 @@ function reconcileChildren(children, parentDOM) {
 export function findDOM(vdom) {
   const {type} = vdom;
   let dom;
-  if (typeof type === 'function') {
-    dom = findDOM(vdom.oldRenderVdom); // 函数组件和类组件: 递归查找oldRenderVdom
+  if (typeof type === 'string' || type === REACT_TEXT) { // 原生组件
+    dom = vdom.dom
   } else {
-    dom = vdom.dom;
+    dom = findDOM(vdom.oldRenderVdom); // 函数组件、类组件、Provider、Consumer组件等: 递归查找oldRenderVdom
   }
   return dom;
 }
@@ -232,7 +259,11 @@ export function compareTwoVdom(parentNode, oldVdom, newVdom, nextDOM) {
  * @param newVdom
  */
 function updateElement(oldVdom, newVdom) {
-  if (oldVdom.type === REACT_TEXT && newVdom.type === REACT_TEXT) { // 文本节点
+  if (oldVdom.type && oldVdom.type.$$typeof === REACT_PROVIDER) {
+    updateProviderComponent(oldVdom, newVdom);
+  } else if (oldVdom.type && oldVdom.type.$$typeof === REACT_CONTEXT) {
+    updateContextComponent(oldVdom, newVdom);
+  } else if (oldVdom.type === REACT_TEXT && newVdom.type === REACT_TEXT) { // 文本节点
     const currentDOM = newVdom.dom = findDOM(oldVdom); // 复用节点（只有文本节点和原生节点的虚拟dom上会挂载真实DOM）
     if (oldVdom.props.content !== newVdom.props.content) {
       currentDOM.textContent = newVdom.props.content;
@@ -276,6 +307,33 @@ function updateFunctionComponent(oldVdom, newVdom) {
   const {type, props} = newVdom;
   const renderVdom = type(props);
   compareTwoVdom(currentDOM.parentNode, oldVdom.oldRenderVdom, renderVdom);
+  newVdom.oldRenderVdom = renderVdom;
+}
+
+/**
+ * 更新Provider组件
+ * @param oldVdom
+ * @param newVdom
+ */
+function updateProviderComponent(oldVdom, newVdom) {
+  const parentDOM = findDOM(oldVdom).parentNode;
+  const {type, props} = newVdom;
+  type._context._currentValue = props.value; // 重新给Provider的value赋值
+  const renderVdom = props.children; // 获取新的vdom
+  compareTwoVdom(parentDOM, oldVdom.oldRenderVdom, renderVdom);
+  newVdom.oldRenderVdom = renderVdom;
+}
+
+/**
+ * 更新Context组件
+ * @param oldVdom
+ * @param newVdom
+ */
+function updateContextComponent(oldVdom, newVdom) {
+  const parentDOM = findDOM(oldVdom).parentNode;
+  const {type, props} = newVdom;
+  const renderVdom = props.children(type._context._currentValue);
+  compareTwoVdom(parentDOM, oldVdom.oldRenderVdom, renderVdom);
   newVdom.oldRenderVdom = renderVdom;
 }
 
