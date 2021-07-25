@@ -1,6 +1,7 @@
 import {REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_CONTEXT, REACT_MEMO} from './constants';
 import { wrapToVdom, shallowEqual } from './utils';
 import { Component, PureComponent } from './Component';
+import { useState } from './react-dom';
 
 /**
  * @param type 元素的类型
@@ -151,6 +152,7 @@ export default {
   createContext,
   cloneElement,
   memo,
+  useState,
 }
 
 /*

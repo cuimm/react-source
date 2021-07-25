@@ -1,20 +1,52 @@
 import {addEvent} from './event';
 import {REACT_CONTEXT, REACT_FORWARD_REF_TYPE, REACT_MEMO, REACT_PROVIDER, REACT_TEXT} from './constants';
 
+let hookIndex = 0;  // 当前执行的hook的索引
+const hookState = []; // 存放所有的状态
+let scheduleUpdate;   // 调度更新方法
+
 /**
  * 将虚拟节点转化为真实DOM并插入容器
  * @param vdom 虚拟节点
  * @param container 根容器
  */
 function render(vdom, container) {
+
+  mount(vdom, container);
+
+  scheduleUpdate = () => {
+    hookIndex = 0;  // 再次调用更新方法的时候，将hookIndex重置为0
+    compareTwoVdom(container, vdom, vdom); // vdom不是指向当前的更新，而是指向根元素
+  };
+
+}
+
+/**
+ * 将虚拟节点转化为真实DOM并插入容器
+ * @param vdom
+ * @param container
+ */
+function mount(vdom, container) {
   if (!vdom) return;
   const newDOM = createDOM(vdom);
   container.appendChild(newDOM);
 
   /** 生命周期 componentDidMount 挂载完毕 **/
   if (newDOM.componentDidMount) {
-      newDOM.componentDidMount();
+    newDOM.componentDidMount();
   }
+}
+
+function useState(initialState) {
+  if (hookState[hookIndex] === undefined) {
+    hookState[hookIndex] = initialState;
+  }
+  const currentIndex = hookIndex;
+  function setState(newState) {
+    hookState[currentIndex] = newState;
+    scheduleUpdate();
+  }
+  return [hookState[hookIndex++], setState];
 }
 
 /**
@@ -391,6 +423,9 @@ const reactDOM = {
 };
 
 export default reactDOM;
+export {
+  useState,
+}
 
 /*
 export function compareTwoVdom(parentNode, oldVdom, newVdom) {
