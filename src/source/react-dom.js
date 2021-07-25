@@ -39,6 +39,7 @@ function mount(vdom, container) {
 
 /**
  * react hooks useState
+ * useState可以我们在函数组件使用状态
  * @param initialState 初始状态
  * @returns {*[]}
  */
@@ -56,6 +57,7 @@ function useState(initialState) {
 
 /**
  * react hooks useMemo
+ * useMemo (备忘录) 可以实现缓存，可以让对象或者函数在依赖项不变的前提下保持不变
  * useMemo 第一次会将factory计算出的结果赋值给目标变量，dom diff进行后面渲染计算的时候，会比较依赖项是否变化，如果依赖项值没有改变不会重新计算目标变量，如果依赖项改变则会重新计算目标变量。
  * @param factory 工厂函数
  * @param deps 依赖项
@@ -82,6 +84,7 @@ function useMemo(factory, deps) {
 
 /**
  * react hooks useCallback
+ * useCallback 可以实现缓存，可以让回调函数在依赖项不变的前提下保持不变
  * callback通过prop传递给子组件，如果依赖项不变，为了减少不必要的更新，返回上次的callback
  * @param callback
  * @param deps 依赖项
