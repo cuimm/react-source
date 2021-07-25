@@ -143,6 +143,15 @@ function memo(type, compare = shallowEqual) {
   };
 }
 
+/**
+ * 接收一个context对象（React.createContext的返回值）并返回该 context 的当前值
+ * @param context context对象（React.createContext的返回值）
+ * @returns {*}
+ */
+function useContext(context) {
+  return context._currentValue;
+}
+
 export default {
   createElement,
   Component,
@@ -156,6 +165,7 @@ export default {
   useMemo,
   useCallback,
   useReducer,
+  useContext,
 }
 
 /*
