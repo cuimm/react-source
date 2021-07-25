@@ -1,5 +1,5 @@
-import {REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_CONTEXT} from './constants';
-import { wrapToVdom } from './utils';
+import {REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_CONTEXT, REACT_MEMO} from './constants';
+import { wrapToVdom, shallowEqual } from './utils';
 import { Component } from './Component';
 
 /**
@@ -134,6 +134,14 @@ function createContext() {
   return context;
 }
 
+function memo(type, compare = shallowEqual) {
+  return {
+    $$typeof: REACT_MEMO,
+    type,
+    compare,
+  };
+}
+
 export default {
   createElement,
   Component,
@@ -141,6 +149,7 @@ export default {
   forwardRef,
   createContext,
   cloneElement,
+  memo,
 }
 
 /*

@@ -1,5 +1,5 @@
-import { addEvent } from './event';
-import {REACT_CONTEXT, REACT_FORWARD_REF_TYPE, REACT_PROVIDER, REACT_TEXT} from './constants';
+import {addEvent} from './event';
+import {REACT_CONTEXT, REACT_FORWARD_REF_TYPE, REACT_MEMO, REACT_PROVIDER, REACT_TEXT} from './constants';
 
 /**
  * 将虚拟节点转化为真实DOM并插入容器
@@ -27,7 +27,9 @@ function createDOM(vdom) {
   // 真实dom节点
   let dom;
 
-  if (type && type.$$typeof === REACT_PROVIDER) { /** Context.Provider **/
+  if (type && type.$$typeof === REACT_MEMO) { /** memo **/
+  return mountMemoComponent(vdom);
+  } if (type && type.$$typeof === REACT_PROVIDER) { /** Context.Provider **/
     return mountProviderComponent(vdom);
   } else if (type && type.$$typeof === REACT_CONTEXT) { /** Context.Consumer **/
     return mountContextComponent(vdom);
@@ -151,6 +153,18 @@ function mountContextComponent(vdom) {
 }
 
 /**
+ * 挂载memo组件
+ * @param vdom
+ */
+function mountMemoComponent(vdom) {
+  const {type, props} = vdom;
+  const renderVdom = type.type(props);
+  vdom.prevProps = props; // 记录老属性值，用于下次更新
+  vdom.oldRenderVdom = renderVdom;
+  return createDOM(renderVdom);
+}
+
+/**
  * 根据虚拟DOM中的属性更新真实DOM属性
  * @param dom
  * @param oldProps
@@ -259,7 +273,9 @@ export function compareTwoVdom(parentNode, oldVdom, newVdom, nextDOM) {
  * @param newVdom
  */
 function updateElement(oldVdom, newVdom) {
-  if (oldVdom.type && oldVdom.type.$$typeof === REACT_PROVIDER) {
+  if (oldVdom.type && oldVdom.type.$$typeof === REACT_MEMO) {
+    updateMemoComponent(oldVdom, newVdom);
+  } if (oldVdom.type && oldVdom.type.$$typeof === REACT_PROVIDER) {
     updateProviderComponent(oldVdom, newVdom);
   } else if (oldVdom.type && oldVdom.type.$$typeof === REACT_CONTEXT) {
     updateContextComponent(oldVdom, newVdom);
@@ -335,6 +351,26 @@ function updateContextComponent(oldVdom, newVdom) {
   const renderVdom = props.children(type._context._currentValue);
   compareTwoVdom(parentDOM, oldVdom.oldRenderVdom, renderVdom);
   newVdom.oldRenderVdom = renderVdom;
+}
+
+/**
+ * 更新memo组件
+ * @param oldVdom
+ * @param newVdom
+ */
+function updateMemoComponent(oldVdom, newVdom) {
+  const {type} = oldVdom;
+  if (type.compare(oldVdom.prevProps, newVdom.props)) {
+    newVdom.oldRenderVdom = oldVdom.oldRenderVdom;
+    newVdom.prevProps = newVdom.props;
+  } else {
+    const {type, props} = newVdom;
+    const parentDOM = findDOM(oldVdom).parentNode;
+    const renderVdom = type.type(props);
+    compareTwoVdom(parentDOM, oldVdom.oldRenderVdom, renderVdom);
+    newVdom.oldRenderVdom = renderVdom;
+    newVdom.prevProps = props; // 记录老的属性
+  }
 }
 
 function updateChildren(parentDOM, oldVChildren, newVChildren) {

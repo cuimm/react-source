@@ -17,3 +17,8 @@ export const REACT_PROVIDER = Symbol('react.provider');
  * 标记Context.Consumer
  */
 export const REACT_CONTEXT = Symbol('react.context');
+
+/**
+ * 标记memo组件
+ */
+export const REACT_MEMO = Symbol('react.memo');
