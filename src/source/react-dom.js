@@ -43,6 +43,7 @@ function mount(vdom, container) {
  * @param initialState 初始状态
  * @returns {*[]}
  */
+/*
 function useState(initialState) {
   if (hookState[hookIndex] === undefined) {
     hookState[hookIndex] = initialState;
@@ -53,6 +54,36 @@ function useState(initialState) {
     scheduleUpdate();
   }
   return [hookState[hookIndex++], setState];
+}
+*/
+
+/**
+ * useState是useReducer的一个语法糖
+ * @param initialState
+ * @returns {*}
+ */
+function useState(initialState) {
+  return useReducer(null, initialState);
+}
+
+/**
+ * useState的替代方案
+ * 在某些场景下，useReducer比useState更适用，例如state逻辑较复杂且包含多个子值，或者下一个state依赖于之前的state等
+ * @param reducer
+ * @param initialState
+ * @returns {*[]}
+ */
+function useReducer(reducer, initialState) {
+  if (hookState[hookIndex] === undefined) {
+    hookState[hookIndex] = initialState;
+  }
+  let currentIndex = hookIndex;
+
+  function dispatch(action) {
+    hookState[currentIndex] = reducer ? reducer(hookState[currentIndex], action) : action;
+    scheduleUpdate();
+  }
+  return [hookState[hookIndex++], dispatch];
 }
 
 /**
@@ -484,6 +515,7 @@ export {
   useState,
   useMemo,
   useCallback,
+  useReducer,
 }
 
 /*
