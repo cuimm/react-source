@@ -4,20 +4,16 @@
 import React from './source/react';
 import ReactDOM from './source/react-dom';
 
-function SubCounter(props) {
-  console.log('SubCounter render');
-  return (
-      <div>
-        SubCounter Number:{props.number}
-      </div>
-  );
+class SubCounter extends React.PureComponent {
+  render() {
+    console.log('SubCounter render');
+    return (
+        <div>SubCounter:{this.props.number}</div>
+    );
+  }
 }
 
-const MemoSubCounter = React.memo(SubCounter);
-
-console.log('MemoSubCounter', MemoSubCounter);
-
-class Counter extends React.Component {
+class Counter extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,7 +35,7 @@ class Counter extends React.Component {
         <div>
           <input ref={this.numberRef} />
           <button onClick={this.handleClick}>+</button>
-          <MemoSubCounter number={this.state.number}/>
+          <SubCounter number={this.state.number}/>
         </div>
     );
   }

@@ -1,3 +1,4 @@
+import { shallowEqual } from './utils';
 import { findDOM, compareTwoVdom } from './react-dom';
 
 function shouldUpdate(classInstance, nextProps, nextState) {
@@ -156,5 +157,11 @@ export class Component {
     if (this.componentDidUpdate) {
       this.componentDidUpdate(this.props, this.state, extraArgs);
     }
+  }
+}
+
+export class PureComponent extends Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return !shallowEqual(this.props, nextProps) || !shallowEqual(this.state, nextState);
   }
 }
