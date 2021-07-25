@@ -37,6 +37,11 @@ function mount(vdom, container) {
   }
 }
 
+/**
+ * react hooks useState
+ * @param initialState 初始状态
+ * @returns {*[]}
+ */
 function useState(initialState) {
   if (hookState[hookIndex] === undefined) {
     hookState[hookIndex] = initialState;
@@ -47,6 +52,55 @@ function useState(initialState) {
     scheduleUpdate();
   }
   return [hookState[hookIndex++], setState];
+}
+
+/**
+ * react hooks useMemo
+ * useMemo 第一次会将factory计算出的结果赋值给目标变量，dom diff进行后面渲染计算的时候，会比较依赖项是否变化，如果依赖项值没有改变不会重新计算目标变量，如果依赖项改变则会重新计算目标变量。
+ * @param factory 工厂函数
+ * @param deps 依赖项
+ * @returns {*}
+ */
+function useMemo(factory, deps) {
+  if (hookState[hookIndex] !== undefined) {
+    const [lastMemo, lastDeps] = hookState[hookIndex];
+    const everySame = deps.every((item, index) => item === lastDeps[index]);
+    if (everySame) {
+      hookIndex++;
+      return lastMemo;
+    } else {
+      const newMemo = factory();
+      hookState[hookIndex++] = [newMemo, deps];
+      return newMemo;
+    }
+  } else {
+    const newMemo = factory();
+    hookState[hookIndex++] = [newMemo, deps];
+    return newMemo;
+  }
+}
+
+/**
+ * react hooks useCallback
+ * callback通过prop传递给子组件，如果依赖项不变，为了减少不必要的更新，返回上次的callback
+ * @param callback
+ * @param deps 依赖项
+ */
+function useCallback(callback, deps) {
+  if (hookState[hookIndex] !== undefined) {
+    const [lastCallback, lastDeps] = hookState[hookIndex];
+    const everySame = lastDeps.every((item, index) => item === deps[index]);
+    if (everySame) {
+      hookIndex++;
+      return lastCallback;
+    } else {
+      hookState[hookIndex++] = [callback, deps];
+      return callback;
+    }
+  } else {
+    hookState[hookIndex++] = [callback, deps];
+    return callback;
+  }
 }
 
 /**
@@ -425,6 +479,8 @@ const reactDOM = {
 export default reactDOM;
 export {
   useState,
+  useMemo,
+  useCallback,
 }
 
 /*
