@@ -86,6 +86,27 @@ function useReducer(reducer, initialState) {
   return [hookState[hookIndex++], dispatch];
 }
 
+function useEffect(callback, deps) {
+  if (hookState[hookIndex]) {
+    const [destroy, lastDeps] = hookState[hookIndex];
+    const everySame = deps.every((dep, index) => dep === lastDeps[index]);
+    if (everySame) {
+      hookIndex++;
+    } else {
+      destroy && destroy(); // 先执行销毁函数
+      setTimeout(() => {
+        const destroy = callback();
+        hookState[hookIndex++] = [destroy, deps];
+      });
+    }
+  } else {
+    setTimeout(() => {
+      const destroy = callback();
+      hookState[hookIndex++] = [destroy, deps];
+    });
+  }
+}
+
 /**
  * react hooks useMemo
  * useMemo (备忘录) 可以实现缓存，可以让对象或者函数在依赖项不变的前提下保持不变
@@ -516,6 +537,7 @@ export {
   useMemo,
   useCallback,
   useReducer,
+  useEffect,
 }
 
 /*

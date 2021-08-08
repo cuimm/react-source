@@ -35,7 +35,7 @@ function App() {
   // }
   /**
    * handleClick 方法修改如下： deps第一次值为[0], 点击按钮执行handleClick会进行更新，deps的值更新为[1]
-   * 如果依赖值没有变化，则会返回上次的callbacl函数，那么React.memo在返回的MemoChild组件内部props就没有改变 => 子组件Child不会重新渲染
+   * 如果依赖值没有变化，则会返回上次的callback函数，那么React.memo在返回的MemoChild组件内部props就没有改变 => 子组件Child不会重新渲染
    */
   const handleClick = React.useCallback(() => {
     setNumber(number + 1);
