@@ -16,8 +16,8 @@ function Counter() {
 
     const timer = setInterval(() => {
       console.log('3. 执行定时器 number', number);
-      setNumber(number + 1); // ok?（ok. 在执行下一次effect之前，会先执行销毁函数，上一次的timer被销毁，生成新的计时器，此时number会指向新的number的值）
-      // setNumber(number => number + 1); // ok
+      // setNumber(number + 1); // ok?（ok. 在执行下一次effect之前，会先执行销毁函数，上一次的timer被销毁，生成新的计时器，此时number会指向新的number的值）
+      setNumber(number => number + 1); // ok
     }, 1000);
 
     // 返回销毁函数。在执行下一次的effect的时候，会先执行销毁函数。
@@ -74,7 +74,8 @@ function Counter() {
 // 3. 执行定时器 number 0
 */
 
-/* 2、设置依赖数组（以下不可行，死循环）
+/*
+// 2、设置依赖数组（以下不可行，死循环）
 function Counter() {
   let [number, setNumber] = React.useState(0);
   console.log('1. render', number);

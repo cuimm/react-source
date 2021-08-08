@@ -43,28 +43,31 @@ function mount(vdom, container) {
  * @param initialState 初始状态
  * @returns {*[]}
  */
-/*
 function useState(initialState) {
   if (hookState[hookIndex] === undefined) {
     hookState[hookIndex] = initialState;
   }
   const currentIndex = hookIndex;
   function setState(newState) {
+    if (typeof newState === 'function') {
+      newState = newState(hookState[currentIndex]);
+    }
     hookState[currentIndex] = newState;
     scheduleUpdate();
   }
   return [hookState[hookIndex++], setState];
 }
-*/
 
 /**
  * useState是useReducer的一个语法糖
  * @param initialState
  * @returns {*}
  */
+/*
 function useState(initialState) {
   return useReducer(null, initialState);
 }
+*/
 
 /**
  * useState的替代方案
