@@ -11,6 +11,7 @@ function Counter() {
   let [number, setNumber] = React.useState(0);
   console.log('1. render', number);
 
+  // useEffect 不会阻塞dom渲染，内部是一个异步任务
   React.useEffect(() => {
     console.log('2. 开启一个定时器', number);
 
@@ -26,6 +27,8 @@ function Counter() {
       clearInterval(timer);
     };
   }, [number]);
+
+  console.log('counter');
 
   return <p>{number}</p>
 }
