@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="90e1a827-0ac3-45f6-bb74-84b469f8bfb8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config-overrides.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dom-diff.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/1.index-v1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/10.index-lifecycle-new-getDerivedStateFromProps-v10.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/10.index-lifecycle-new-getSnapshotBeforeUpdate-v10.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/11.index-context-source-v11.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/11.index-context-v11.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/12.index-higher-order-component-v12.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/13.index-decorators-v13.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/14.index-inheritance-inversion-v14.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/15.index-render-props-children-v15.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/15.index-render-props-customize-prop-v15.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/15.index-render-props-native-v15.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/17.index-memo-v17.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/18.index-PureComponent-v18.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/19.index-hooks-useState-v19.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/2.index-function-component-v2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/20.index-hooks-useMemo-useCallback-v20.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/21.index-hooks-useReducer-v21.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/22.index-hooks-useContext-v22.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/23.index-hooks-useEffect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/24.index-hooks-useLayoutEffect-v24.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/25.index-hooks-useImperativeHandle-v25.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/26.index-hooks-customize.v26.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/3.index-class-component-v3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/4.index-setState-v4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/5.index-event-v5.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/6.1.index-ref-v6.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/6.2.index-ref-class-component-v6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/6.3.index-ref-function-component-v6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/8.index-liftcycle-v8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/8.lifecycle.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/history/9.index-lifecycle-domdiff-v9.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/liftcycle.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lifycycle-new.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/note.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/Component.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/event.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/react-dom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/react.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-source/src/source/utils.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="657428265">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.24" value="1" />
+          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.48" value="1" />
+          <entry key="project.open.time.5" value="2" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="14" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="css" value="1" />
+          <entry key="gitignore" value="3" />
+          <entry key="html" value="1" />
+          <entry key="ico" value="1" />
+          <entry key="js" value="124" />
+          <entry key="json" value="6" />
+          <entry key="md" value="10" />
+          <entry key="svg" value="1" />
+          <entry key="txt" value="1" />
+          <entry key="v23" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CSS" value="1" />
+          <entry key="HTML" value="1" />
+          <entry key="Image" value="1" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="125" />
+          <entry key="Markdown" value="10" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="SVG" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.js.language.service.starts">
+        <counts>
+          <entry key="ESLintLanguageService" value="14" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="gitignore" value="1" />
+          <entry key="html" value="29" />
+          <entry key="js" value="29182" />
+          <entry key="json" value="2" />
+          <entry key="md" value="475" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="29" />
+          <entry key="JSON" value="2" />
+          <entry key="JavaScript" value="29182" />
+          <entry key="Markdown" value="475" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>enqueueSetState</find>
+      <find>isBatchUpdate</find>
+      <find>batchUpdate</find>
+      <find>console</find>
+      <find>forwardRef</find>
+      <find>componentWillUpdate</find>
+      <find>compareTwoVdom</find>
+      <find>didUpdate</find>
+      <find>FatherContext</find>
+      <find>name</find>
+      <find>renderVdom</find>
+      <find>findD</find>
+      <find>!obj2.hasOwnProperty(key)</find>
+      <find>typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null</find>
+      <find>mountProviderComponent</find>
+      <find>shallow</find>
+      <find>updateProviderComponent</find>
+      <find>shouldComponentUpdate</find>
+      <find>const currentIndex = hookIndex;</find>
+      <find>setName</find>
+      <find>ReactCurrentDispatcher</find>
+      <find>ReactComponent</find>
+      <find>console.log('hookIndex', hookIndex);</find>
+      <find>reducer</find>
+      <find>finddom</find>
+      <find>useReducer</find>
+      <find>REACT_MEMO</find>
+      <find>useEffect</find>
+      <find>300px</find>
+      <find>destroy</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>200px</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/node_modules</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/App.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/source/react.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/history/1.index-v1.js" />
+        <option value="$PROJECT_DIR$/history/2.index-function-component-v2.js" />
+        <option value="$PROJECT_DIR$/history/3.index-class-component-v3.js" />
+        <option value="$PROJECT_DIR$/history/4.index-setState-v4.js" />
+        <option value="$PROJECT_DIR$/src/source/event.js" />
+        <option value="$PROJECT_DIR$/history/5.index-event-v5.js" />
+        <option value="$PROJECT_DIR$/history/6.index-ref-v6.1.js" />
+        <option value="$PROJECT_DIR$/history/6.2.index-ref-class-component-v6.js" />
+        <option value="$PROJECT_DIR$/history/6.3.index-ref-function-component-v6.js" />
+        <option value="$PROJECT_DIR$/history/11.index-context-source-v11.js" />
+        <option value="$PROJECT_DIR$/history/15.index-render-props-native-v15.js" />
+        <option value="$PROJECT_DIR$/history/15.index-render-props-children-v15.js" />
+        <option value="$PROJECT_DIR$/history/15.index-render-props-customize-prop-v15.js" />
+        <option value="$PROJECT_DIR$/src/source/constants.js" />
+        <option value="$PROJECT_DIR$/src/source/utils.js" />
+        <option value="$PROJECT_DIR$/history/17.index-memo-v17.js" />
+        <option value="$PROJECT_DIR$/src/source/Component.js" />
+        <option value="$PROJECT_DIR$/history/19.index-hoos-useState-v19.js" />
+        <option value="$PROJECT_DIR$/history/18.index-PureComponent-v18.js" />
+        <option value="$PROJECT_DIR$/history/21.index-hooks-useReducer-v21.js" />
+        <option value="$PROJECT_DIR$/history/20.index-hooks-useMemo-useCallback-v20.js" />
+        <option value="$PROJECT_DIR$/history/22.index-hooks-useContext-v22.js" />
+        <option value="$PROJECT_DIR$/history/23.index-hooks-useEffect.js" />
+        <option value="$PROJECT_DIR$/src/source/react-dom.js" />
+        <option value="$PROJECT_DIR$/src/source/react.js" />
+        <option value="$PROJECT_DIR$/history/25.index-hooks-useImperativeHandle-v25.js" />
+        <option value="$PROJECT_DIR$/src/index.js" />
+        <option value="$PROJECT_DIR$/note.md" />
+        <option value="$PROJECT_DIR$/history/26.index-hooks-customize.v26.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/1.react-source/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/1.react-source/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1440" />
+    <option name="height" value="900" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="react-source" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-source" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/react-source" />
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90e1a827-0ac3-45f6-bb74-84b469f8bfb8" name="Default Changelist" comment="" />
+      <created>1625626954217</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625626954217</updated>
+      <workItem from="1625626956927" duration="26118000" />
+      <workItem from="1625837488319" duration="10317000" />
+      <workItem from="1626235457561" duration="12535000" />
+      <workItem from="1626439339671" duration="49000" />
+      <workItem from="1626536056333" duration="2999000" />
+      <workItem from="1626675056445" duration="29000" />
+      <workItem from="1626753485055" duration="1581000" />
+      <workItem from="1626839061241" duration="30496000" />
+      <workItem from="1627545538609" duration="174000" />
+      <workItem from="1627570625072" duration="540000" />
+      <workItem from="1627573413205" duration="550000" />
+      <workItem from="1628095494656" duration="254000" />
+      <workItem from="1628422717118" duration="9635000" />
+      <workItem from="1628958785308" duration="6994000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="102271000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1430585" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="DB Browser" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.20722891" />
+      <window_info anchor="bottom" id="DB Execution Console" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.25301206" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/public/robots.txt" />
+    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-scripts/scripts/start.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-dev-utils/WebpackDevServerUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-470">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.css" />
+    <entry file="file://$PROJECT_DIR$/src/App.test.js" />
+    <entry file="file://$PROJECT_DIR$/src/logo.svg" />
+    <entry file="file://$PROJECT_DIR$/src/reportWebVitals.js" />
+    <entry file="file://$PROJECT_DIR$/src/setupTests.js" />
+    <entry file="file://$PROJECT_DIR$/src/App.js" />
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="76">
+            <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/1.index-v1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="63" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react/umd/react.development.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="257" column="15" lean-forward="true" selection-start-line="257" selection-start-column="15" selection-end-line="257" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/5.index-event-v5.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/4.index-setState-v4.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="56" column="12" lean-forward="true" selection-start-line="56" selection-start-column="12" selection-end-line="56" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/2.index-function-component-v2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/8.index-liftcycle-v8.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="34" column="3" lean-forward="true" selection-start-line="34" selection-start-column="3" selection-end-line="34" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/12.index-higher-order-component-v12.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-127" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/15.index-render-props-native-v15.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/15.index-render-props-customize-prop-v15.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="3" lean-forward="true" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/18.index-PureComponent-v18.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/17.index-memo-v17.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="1" lean-forward="true" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/3.index-class-component-v3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/15.index-render-props-children-v15.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="28" column="3" lean-forward="true" selection-start-line="28" selection-start-column="3" selection-end-line="28" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/11.index-context-source-v11.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="86" column="6" lean-forward="true" selection-start-line="86" selection-start-column="6" selection-end-line="86" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/11.index-context-v11.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1232">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/19.index-hooks-useState-v19.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/21.index-hooks-useReducer-v21.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="27" column="1" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/22.index-hooks-useContext-v22.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#68#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/20.index-hooks-useMemo-useCallback-v20.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react/cjs/react.development.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="1515" column="26" selection-start-line="1515" selection-start-column="20" selection-end-line="1515" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/Component.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="143" selection-start-line="143" selection-end-line="143" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/23.index-hooks-useEffect.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#68#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/react-dom.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1817">
+          <caret line="160" column="5" selection-start-line="160" selection-start-column="5" selection-end-line="160" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+            <element signature="n#!!doc;n#useState#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/24.index-hooks-useLayoutEffect-v24.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/6.1.index-ref-v6.1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/6.2.index-ref-class-component-v6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/6.3.index-ref-function-component-v6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="3" lean-forward="true" selection-start-line="19" selection-start-column="3" selection-end-line="19" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/25.index-hooks-useImperativeHandle-v25.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="703">
+          <caret line="37" column="26" lean-forward="true" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#68#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/source/react.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="158" column="16" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#94#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="663">
+            <caret line="106" selection-start-line="106" selection-end-line="106" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history/26.index-hooks-customize.v26.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="75" column="24" selection-start-line="75" selection-start-column="24" selection-end-line="75" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#68#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/1.react-source/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#68#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
