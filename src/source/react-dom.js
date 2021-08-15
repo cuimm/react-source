@@ -89,6 +89,25 @@ function useReducer(reducer, initialState) {
   return [hookState[hookIndex++], dispatch];
 }
 
+function useRef() {
+  if (hookState[hookIndex]) {
+    return hookState[hookIndex++];
+  } else {
+    hookState[hookIndex] = {
+      current: null,
+    };
+    return hookState[hookIndex++];
+  }
+}
+
+/**
+ * 在函数组件主体内（这里指在 React 渲染阶段）改变 DOM、添加订阅、设置定时器、记录日志以及执行其他包含副作用的操作都是不被允许的，因为这可能会产生莫名其妙的 bug 并破坏 UI 的一致性。
+ * 使用 useEffect 完成副作用操作。
+ * 赋值给 useEffect 的函数会在组件渲染到屏幕之后执行。
+ * 给函数组件提供了操作副作用的能力。
+ * @param callback
+ * @param deps
+ */
 function useEffect(callback, deps) {
   if (hookState[hookIndex]) {
     const [destroy, lastDeps] = hookState[hookIndex];
@@ -104,6 +123,34 @@ function useEffect(callback, deps) {
     }
   } else {
     setTimeout(() => {
+      const destroy = callback();
+      hookState[hookIndex++] = [destroy, deps];
+    });
+  }
+}
+
+/**
+ * 其函数签名与 useEffect 相同，但它会在所有的 DOM 变更之后同步调用 effect
+ * useEffect不会阻塞浏览器渲染，而 useLayoutEffect 会阻塞浏览器渲染
+ * useEffect会在浏览器渲染结束后执行,useLayoutEffect 则是在 DOM 更新完成后,浏览器绘制之前执行
+ * @param callback
+ * @param deps
+ */
+function useLayoutEffect(callback, deps) {
+  if (hookState[hookIndex]) {
+    const [destroy, lastDeps] = hookState[hookIndex];
+    const everySame = deps.every((dep, index) => dep === lastDeps[index]);
+    if (everySame) {
+      hookIndex++;
+    } else {
+      destroy && destroy();
+      queueMicrotask(() => {
+        const destroy = callback();
+        hookState[hookIndex++] = [destroy, deps];
+      });
+    }
+  } else {
+    queueMicrotask(() => {
       const destroy = callback();
       hookState[hookIndex++] = [destroy, deps];
     });
@@ -540,7 +587,9 @@ export {
   useMemo,
   useCallback,
   useReducer,
+  useRef,
   useEffect,
+  useLayoutEffect,
 }
 
 /*
