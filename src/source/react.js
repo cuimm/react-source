@@ -152,6 +152,10 @@ function useContext(context) {
   return context._currentValue;
 }
 
+function useImperativeHandle(ref, factory) {
+  ref.current = factory();
+}
+
 export default {
   createElement,
   Component,
@@ -169,6 +173,7 @@ export default {
   useRef,
   useEffect,
   useLayoutEffect,
+  useImperativeHandle,
 }
 
 /*
