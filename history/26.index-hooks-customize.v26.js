@@ -5,12 +5,12 @@ import React from './source/react';
 import ReactDOM from './source/react-dom';
 
 /**
-    自定义hooks
-    1、必须是一个function
-    2、方法名必须是use开头
-    3、在函数内部必须调用其他的hooks
+ 自定义hooks
+ 1、必须是一个function
+ 2、方法名必须是use开头
+ 3、在函数内部必须调用其他的hooks
 
-    - 自定义hooks复用的是逻辑，而非状态本身。
+ - 自定义hooks复用的是逻辑，而非状态本身。
  */
 function useCounter(initialState) {
   const [number, setNumber] = React.useState(initialState);

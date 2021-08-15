@@ -95,3 +95,12 @@ hooks 可以任意组合，很方便的实现逻辑的复用、功能的拆分�
 useRef - 只会创建一个ref
 createRef - 每次调用会创建一个新的ref
 
+### 自定义hooks
+自定义hooks   
+    - 1、必须是一个function   
+    - 2、方法名必须是use开头   
+    - 3、在函数内部必须调用其他的hooks   
+    
+    - 自定义hooks复用的是逻辑，而非状态本身。
+    
+
