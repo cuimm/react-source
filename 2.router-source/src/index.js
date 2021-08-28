@@ -11,11 +11,11 @@ ReactDOM.render(
     (
         <div>
           <Router>
-            <>
+            <React.Fragment>
               <Route path="/" component={Home} exact/>
               <Route path="/user/:id" component={User}/>
               <Route path="/profile" component={Profile}/>
-            </>
+            </React.Fragment>
           </Router>
 
           <a href="#/">home</a>
